@@ -25,7 +25,7 @@ def fetch_github_file_contents(repo_owner, repo_name, file_path):
         print(f"Failed to fetch file from GitHub. Status code: {response.status_code}")
         return None
 
-embedded_hash = "your_embedded_hash_here"
+embedded_hash = "4e7836577ca5408b3dc7ce9b5cba6ecd36132a627a651ba77470798c4558a6af"
 
 repo_owner = "tomomo34"
 repo_name = "DigiHodiny"
