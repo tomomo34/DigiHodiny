@@ -29,7 +29,7 @@ embedded_hash = "your_embedded_hash_here"
 
 repo_owner = "tomomo34"
 repo_name = "DigiHodiny"
-file_path_in_repo = "path/to/file"
+file_path_in_repo = "ardcom.py"
 github_file_contents = fetch_github_file_contents(repo_owner, repo_name, file_path_in_repo)
 
 if github_file_contents is not None:
