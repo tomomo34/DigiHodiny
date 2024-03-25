@@ -25,7 +25,8 @@ def fetch_github_file_contents(repo_owner, repo_name, file_path):
         print(f"Failed to fetch file from GitHub. Status code: {response.status_code}")
         return None
 
-embedded_hash = "4e7836577ca5408b3dc7ce9b5cba6ecd36132a627a651ba77470798c4558a6af"
+with open('hash.txt', 'r') as file:
+    stored_hash = file.read().strip()
 
 repo_owner = "tomomo34"
 repo_name = "DigiHodiny"
@@ -35,7 +36,7 @@ github_file_contents = fetch_github_file_contents(repo_owner, repo_name, file_pa
 if github_file_contents is not None:
     calculated_hash = hashlib.sha256(github_file_contents.encode()).hexdigest()
     print(calculated_hash)
-    if calculated_hash == embedded_hash:
+    if calculated_hash == stored_hash:
         print("Hashes match! The content of the GitHub repository matches the embedded hash.")
     else:
         print("Hashes do not match! The content of the GitHub repository differs from the embedded hash.")
