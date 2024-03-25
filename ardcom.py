@@ -22,7 +22,7 @@ def fetch_github_file_contents(repo_owner, repo_name, file_path):
     if response.status_code == 200:
         return response.text
     else:
-        print(f"Failed to fetch file from GitHub. Status code: {response.status_code}")
+        logging.warning(f"Failed to fetch file from GitHub. Status code: {response.status_code}")
         return None
 
 with open('hash.txt', 'r') as file:
@@ -35,13 +35,14 @@ github_file_contents = fetch_github_file_contents(repo_owner, repo_name, file_pa
 
 if github_file_contents is not None:
     calculated_hash = hashlib.sha256(github_file_contents.encode()).hexdigest()
-    print(calculated_hash)
+    logging.info(calculated_hash)
     if calculated_hash == stored_hash:
-        print("Hashes match! The content of the GitHub repository matches the embedded hash.")
+        logging.warning("Hash se shoduje neni potreba updatu")
     else:
-        print("Hashes do not match! The content of the GitHub repository differs from the embedded hash.")
+        print("Hash se neshoduje je potreba update na https://github.com/tomomo34/DigiHodiny")
+        logging.warning("Hash se neshoduje je potreba update na https://github.com/tomomo34/DigiHodiny")
 else:
-    print("Failed to fetch content from GitHub. Please check your repository details.")
+    logging.warning("Failed to fetch content from GitHub. Please check your repository details.")
 
 tries = 50
 logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', format='%(asctime)s%(name)s - %(levelname)s - %(message)s')
