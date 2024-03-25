@@ -112,3 +112,7 @@
 2024-03-25 18:26:31,730root - INFO - b'Second: 31\r\n'
 2024-03-25 18:26:31,731root - INFO - '20240325182631' found in 'b'Received String: 20240325182631\r\n''
 2024-03-25 18:26:31,731root - WARNING - datum nahrano
+2024-03-25 18:39:23,381root - CRITICAL - Could not find an arduino - is it plugged in?
+2024-03-25 18:41:18,253root - CRITICAL - Could not find an arduino - is it plugged in?
+2024-03-25 18:41:21,557root - CRITICAL - Could not find an arduino - is it plugged in?
+2024-03-25 18:41:27,017root - CRITICAL - Could not find an arduino - is it plugged in?
