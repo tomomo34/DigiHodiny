@@ -6,47 +6,8 @@ from datetime import datetime
 import re
 import os
 import logging
-import hashlib
-import requests
-
-def calculate_hash(file_path, algorithm='sha256'):
-    hasher = hashlib.new(algorithm)
-    with open(file_path, 'rb') as file:
-        for chunk in iter(lambda: file.read(4096), b''):
-            hasher.update(chunk)
-    return hasher.hexdigest()
-
-def fetch_github_file_contents(repo_owner, repo_name, file_path):
-    url = f"https://raw.githubusercontent.com/{repo_owner}/{repo_name}/master/{file_path}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.text
-    else:
-        logging.warning(f"Failed to fetch file from GitHub. Status code: {response.status_code}")
-        return None
-
-with open('hash.txt', 'r') as file:
-    stored_hash = file.read().strip()
-
-repo_owner = "tomomo34"
-repo_name = "DigiHodiny"
-file_path_in_repo = "ardcom.py"
-github_file_contents = fetch_github_file_contents(repo_owner, repo_name, file_path_in_repo)
-
-if github_file_contents is not None:
-    calculated_hash = hashlib.sha256(github_file_contents.encode()).hexdigest()
-    logging.info(calculated_hash)
-    if calculated_hash == stored_hash:
-        logging.warning("Hash se shoduje neni potreba updatu")
-    else:
-        print("Hash se neshoduje je potreba update na https://github.com/tomomo34/DigiHodiny")
-        logging.warning("Hash se neshoduje je potreba update na https://github.com/tomomo34/DigiHodiny")
-else:
-    logging.warning("Failed to fetch content from GitHub. Please check your repository details.")
 
 tries = 50
-logging.basicConfig(level=logging.DEBUG, filename='app.log', filemode='a', format='%(asctime)s%(name)s - %(levelname)s - %(message)s')
-
 def find_arduino(serial_number):
     for pinfo in serial.tools.list_ports.comports():
         if pinfo.serial_number == serial_number:
