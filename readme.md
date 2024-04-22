@@ -32,4 +32,9 @@ Zapnout a program by se sam mel pripojit k arduinu pokud je zapojene nebo vyhodi
 
 ## Princip fungovani
 
-
+Kod navaze komunikaci s arduinem arduino je hleddany podle jeho serioveho cisla.
+Po navazanin komunikace si python pres datetime stahne aktualni datum ve formatu %Y%m%d%H%M%S a odesia kod jako utf-8 bytes do arduina. 
+Arduino zjisti ze je mu posilano datum a zacne poslouchat na COM portu.
+Finalne probehne kontrola kdy arduino odesle zpet data co prijalo a python porovna ocekavanou a prijatou hodnotu. Pokud se data shoduji bylo datum uspesne nahrano pokud ne probiha druhy pokus.
+Z nejakeho duvodu se vetsinou datum odesle na nekolikaty pokus obcas je potreba i manualni restart COM (vypojeni a zapojeni arduina)
+Kod ma padesat pokusu nez vyhodi err.
