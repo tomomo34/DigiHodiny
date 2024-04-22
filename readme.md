@@ -38,3 +38,5 @@ Arduino zjisti ze je mu posilano datum a zacne poslouchat na COM portu.
 Finalne probehne kontrola kdy arduino odesle zpet data co prijalo a python porovna ocekavanou a prijatou hodnotu. Pokud se data shoduji bylo datum uspesne nahrano pokud ne probiha druhy pokus.
 Z nejakeho duvodu se vetsinou datum odesle na nekolikaty pokus obcas je potreba i manualni restart COM (vypojeni a zapojeni arduina)
 Kod ma padesat pokusu nez vyhodi err.
+
+## Jak posavit kod se zmenami
