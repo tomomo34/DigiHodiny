@@ -12,8 +12,8 @@ def find_arduino(serial_number):
     for pinfo in serial.tools.list_ports.comports():
         if pinfo.serial_number == serial_number:
             return serial.Serial(pinfo.device, baudrate=115200, timeout=.1)
-    logging.critical("Could not find an arduino - is it plugged in?")
-    input("arduino nenalezeno")
+    logging.critical("arduino nenalezeno")
+    input("arduino nenalezeno je zapojeno?")
     os._exit(0)
 arduino = find_arduino(serial_number='A9H5X9N6A')
 def write_read(x):
