@@ -40,3 +40,6 @@ Z nejakeho duvodu se vetsinou datum odesle na nekolikaty pokus obcas je potreba 
 Kod ma padesat pokusu nez vyhodi err.
 
 ## Jak posavit kod se zmenami
+```bash
+pip install pyinstaller
+```
