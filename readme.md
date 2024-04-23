@@ -49,3 +49,38 @@ cd #do mista ulozeni#
 ```bash
 pyinstaller --onefile --clean ardcom.py
 ```
+
+## Princip fungovani
+
+Kod ktery vygeneruje cas a odesle
+```python
+def write_read(x):
+    arduino.write(bytes(x, 'utf-8'))
+    time.sleep(0.02)
+    data = arduino.readline()
+    return data
+def get_formatted_datetime():
+    current_datetime = datetime.now()
+    formatted_datetime = current_datetime.strftime('%Y%m%d%H%M%S')
+    return formatted_datetime
+def compare_strings(string1, string2):
+    pattern = re.compile(string2)
+    match = re.search(pattern, string1)
+```
+
+Kod ktery na arduinu prijma cas
+```C#
+  if (Serial.available() > 0) {
+    x = Serial.readString();
+    Serial.println("Received String: " + x);
+    
+    // Check if the received string is long enough
+    if (x.length() >= 14) {
+      processReceivedData(x);
+      wholereset();
+      first = true;
+    } else {
+      Serial.println("Invalid input length");
+    }
+  }
+```
