@@ -43,3 +43,9 @@ Kod ma padesat pokusu nez vyhodi err.
 ```bash
 pip install pyinstaller
 ```
+```bash
+cd #do mista ulozeni#
+```
+```bash
+pyinstaller --onefile --clean ardcom.py
+```
